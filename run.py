@@ -18,3 +18,4 @@ dicti = FirstPage.scrap()
 
 main = main.Main(dicti)
 main.takeLinks()
+main.main()
