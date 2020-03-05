@@ -8,4 +8,9 @@ class PageScrap():
         self.shell = shell
         self.link = link
     
+    def connect(self):
+        r = requests.get(self.url)
+        html = BeautifulSoup(r.contet, "html.parser")
+        return html
+
 
