@@ -19,8 +19,5 @@ class PageScrap():
             m = el.find_all(self.link)
             t = el.find_all(self.linkText, attrs = {'class' : 'txt'})   
             for el in range(0, len(m)):
-                self.dict[t[el].get_text()]='https://sfbay.craigslist.org' + m[el].get('href')
-                print(t[el].get_text())
-        
-        print(len(m))
-        print(self.dict)
+                self.dict[t[el].get_text()]='https://sfbay.craigslist.org' + m[el].get('href')      
+        return self.dict  

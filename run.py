@@ -9,14 +9,8 @@ shell = ".community > #ccc"
 link = "a"
 linkText = "span"
 
+dicti = {}
 
 FirstPage = scrapFirstPage.PageScrap(url, shell, link, linkText)
 FirstPage.connect()
-FirstPage.scrap()
-
-"""
-dicte = {}
-for i in range(0, 10):
-    dicte[i]= 'pie'+ str(i)
-print(dicte)
-"""
+dicti = FirstPage.scrap()
