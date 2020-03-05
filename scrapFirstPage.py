@@ -12,5 +12,7 @@ class PageScrap():
         r = requests.get(self.url)
         html = BeautifulSoup(r.contet, "html.parser")
         return html
-
+    
+    def scrap(self , html):
+        
 
