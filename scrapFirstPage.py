@@ -17,10 +17,10 @@ class PageScrap():
         self.dict = {}
         for el in self.html.select(self.shell):
             m = el.find_all(self.link)
-            t = el.find_all(self.linkText)    
+            t = el.find_all(self.linkText, attrs = {'class' : 'txt'})   
             for el in range(0, len(m)):
-                self.dict[el]='https://sfbay.craigslist.org' + m[el].get('href')
-            print(t)
+                self.dict[t[el].get_text()]='https://sfbay.craigslist.org' + m[el].get('href')
+                print(t[el].get_text())
         
         print(len(m))
         print(self.dict)

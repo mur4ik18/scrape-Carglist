@@ -7,7 +7,7 @@ import scrapFirstPage
 url = "https://sfbay.craigslist.org/"
 shell = ".community > #ccc"
 link = "a"
-linkText = "a > span"
+linkText = "span"
 
 
 FirstPage = scrapFirstPage.PageScrap(url, shell, link, linkText)
