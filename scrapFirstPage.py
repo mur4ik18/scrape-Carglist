@@ -7,12 +7,12 @@ class PageScrap():
         self.url = url
         self.shell = shell
         self.link = link
-    
+#    
     def connect(self):
         r = requests.get(self.url)
-        html = BeautifulSoup(r.contet, "html.parser")
-        return html
+        self.html = BeautifulSoup(r.content, "html.parser")
     
-    def scrap(self , html):
-        
+    def scrap(self):
+        for el in self.html.select(self.shell):
+            print(el.find_all(self.link))
 

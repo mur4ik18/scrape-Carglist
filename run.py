@@ -10,4 +10,5 @@ link = "a"
 
 
 FirstPage = scrapFirstPage.PageScrap(url, shell, link)
-html = FirstPage.connect()
+FirstPage.connect()
+FirstPage.scrap()
