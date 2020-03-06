@@ -53,6 +53,7 @@ class Main():
                 pages = (requests.get(url+str("?s="+str(0+ z))))
                 z += 120
                 bhtml = BeautifulSoup(pages.content,"html.parser")
+                print(url+str("?s="+str(0+ z)))
                 for el in bhtml.select(self.shell):
                     #take all data's
                     title = el.select(self.title)
