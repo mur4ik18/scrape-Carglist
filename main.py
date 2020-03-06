@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import os 
+from datetime import date
+import shutil
 
 class Main():
     def __init__(self, dicts, shell, title, link, price, date):
@@ -24,12 +27,18 @@ class Main():
         print(self.links)
 
     def main(self):
+        
         # folder name
         self.folderName = 'output'
         y = 0
-        z = 0
-
-
+        
+        if os.path.exists(self.folderName):
+            # Удалаяем папку и все что в ней есть
+            shutil.rmtree(self.folderName)
+        else:
+            # Если не нашли папку то пишем что ее нет...
+            print("I'm not find")
+        os.mkdir(self.folderName)
 
         for i in range(0 , len(self.links)):
             # first page link
@@ -45,9 +54,9 @@ class Main():
             #
             print(self.links[i])
             # open file.txt
-            f = open('out'+ str(y)+'.txt','w', encoding="utf-8")
+            f = open(self.folderName+'/'+ str(y) +'.txt','w', encoding="utf-8")
             y+=1
-
+            z = 0
 
             for r in range(spug):
                 pages = (requests.get(url+str("?s="+str(0+ z))))
