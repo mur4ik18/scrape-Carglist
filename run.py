@@ -1,8 +1,16 @@
 import requests
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
+from openpyxl import Workbook 
 # my second files imports:
 import scrapFirstPage
 import main 
+
+
+
+
+
+workbook = Workbook()
+sheet = workbook.active
 
 # Our variables for start page
 url = "https://sfbay.craigslist.org/"
