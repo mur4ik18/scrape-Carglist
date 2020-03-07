@@ -15,11 +15,6 @@ class Main():
         self.date = date
         self.dut = dut
 
-
-
-
-
-
     # getting all ours links
     def takeLinks(self):
         # all our links
@@ -28,13 +23,14 @@ class Main():
         self.Category = []
         # write all our catigories
         for i in self.dict.keys():
+            # write list function
             self.Category.append(i)
         # write all our links
         for i in self.dict:
+            # write list function
             self.links.append(self.dict[i])
 
     def main(self):
-        #DELETE THIS
         y = 0
         # Here we create new folder(day,month,hours,minuts)
         os.mkdir(str(self.dut))
@@ -59,8 +55,6 @@ class Main():
             # open file.txt
             # MODIFI this!!!!! We need use category name
             f = open(str(self.dut)+'/'+ self.Category[y] +'.txt','w', encoding="utf-8")
-            
-            # DELETE THIS
             y+=1
             # what items we skip
             z = 0
