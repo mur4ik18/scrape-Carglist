@@ -54,7 +54,7 @@ class Main():
             print(self.links[i])
             # open file.txt
             # MODIFI this!!!!! We need use category name
-            f = open(str(self.dut)+'/'+ self.Category[y] +'.txt','w', encoding="utf-8")
+            f = open(str(self.dut)+"/"+str(self.Category[y].replace('/', '-')) +'.txt','w', encoding="utf-8")
             y+=1
             # what items we skip
             z = 0
@@ -68,7 +68,7 @@ class Main():
                 # get HTML file page
                 bhtml = BeautifulSoup(pages.content,"html.parser")
                 # print what page we open now. 
-                print(url+str("?s="+str(0+ z)))
+                print(r)
 
                 # selected all shell what we have in pages
                 for el in bhtml.select(self.shell):

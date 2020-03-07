@@ -11,7 +11,7 @@ currentDT = datetime.datetime.now()
 # print time
 print (currentDT.strftime("%d-%m-%H:%M:%S"))
 # write time now
-date = currentDT.strftime("%d-%m-%H-%M")
+date = currentDT.strftime("%d-%m-%H-%M-%S")
 # excel variabels
 workbook = Workbook()
 # vkladka 
