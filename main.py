@@ -22,13 +22,16 @@ class Main():
 
     # getting all ours links
     def takeLinks(self):
+        # all our links
         self.links = []
+        # all our categories
         self.Category = []
+        # write all our catigories
         for i in self.dict.keys():
-            print(i)
+            self.Category.append(i)
+        # write all our links
         for i in self.dict:
             self.links.append(self.dict[i])
-        print(self.links)
 
     def main(self):
         #DELETE THIS
@@ -55,7 +58,7 @@ class Main():
             print(self.links[i])
             # open file.txt
             # MODIFI this!!!!! We need use category name
-            f = open(str(self.dut)+'/'+ str(y) +'.txt','w', encoding="utf-8")
+            f = open(str(self.dut)+'/'+ self.Category[y] +'.txt','w', encoding="utf-8")
             
             # DELETE THIS
             y+=1
