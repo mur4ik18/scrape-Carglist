@@ -4,10 +4,12 @@ from openpyxl import Workbook
 # my second files imports:
 import scrapFirstPage
 import main 
-
-
-
-
+import datetime
+ 
+currentDT = datetime.datetime.now()
+ 
+print (currentDT.strftime("%d-%m-%H:%M:%S"))
+date = currentDT.strftime("%d-%m-%H-%M")
 
 workbook = Workbook()
 sheet = workbook.active
@@ -41,6 +43,6 @@ FirstPage = scrapFirstPage.PageScrap(url, shell, link, linkText)
 FirstPage.connect()
 dicti = FirstPage.scrap()
 
-main = main.Main(dicti, Pshell, Ptitle, Plink, Pprice, Pdate)
+main = main.Main(dicti, Pshell, Ptitle, Plink, Pprice, Pdate, date)
 main.takeLinks()
 main.main()

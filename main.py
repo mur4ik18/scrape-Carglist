@@ -6,13 +6,14 @@ from datetime import date
 import shutil
 
 class Main():
-    def __init__(self, dicts, shell, title, link, price, date):
+    def __init__(self, dicts, shell, title, link, price, date, dut):
         self.dict = dicts
         self.shell = shell
         self.title = title
         self.link = link
         self.price = price 
         self.date = date
+        self.dut = dut
 
 
 
@@ -28,23 +29,16 @@ class Main():
 
     def main(self):
         
-        # folder name
-        self.folderName = 'output'
         y = 0
-        
-        if os.path.exists(self.folderName):
-            # Удалаяем папку и все что в ней есть
-            shutil.rmtree(self.folderName)
-        else:
-            # Если не нашли папку то пишем что ее нет...
-            print("I'm not find")
-        os.mkdir(self.folderName)
+        # Here we create new folder(day,month,hours,minuts)
+        os.mkdir(str(self.dut))
 
         for i in range(0 , len(self.links)):
             # first page link
             url = self.links[i]
-            # 
+            # get HTTP
             r = requests.get(url)
+            # convert HTTP => HTML
             html = BeautifulSoup(r.content, "html.parser")
             pag = html.find('span', attrs={
                 "class": "totalcount"
