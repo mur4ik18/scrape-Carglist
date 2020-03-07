@@ -20,19 +20,22 @@ class Main():
 
 
 
-# getting all ours links
+    # getting all ours links
     def takeLinks(self):
         self.links = []
+        self.Category = []
+        for i in self.dict.keys():
+            print(i)
         for i in self.dict:
             self.links.append(self.dict[i])
         print(self.links)
 
     def main(self):
-        
+        #DELETE THIS
         y = 0
         # Here we create new folder(day,month,hours,minuts)
         os.mkdir(str(self.dut))
-
+        # this for open every first category page  and calculate how much pages we are have.
         for i in range(0 , len(self.links)):
             # first page link
             url = self.links[i]
@@ -40,23 +43,37 @@ class Main():
             r = requests.get(url)
             # convert HTTP => HTML
             html = BeautifulSoup(r.content, "html.parser")
+            # find numbers items in this category
             pag = html.find('span', attrs={
                 "class": "totalcount"
             })
+            # calculate how much pages we have
             spug = int(int(pag.text)/120)
+            #print pages numbers
             print(spug)
-            #
+            # print what link now we open and scrap
             print(self.links[i])
             # open file.txt
-            f = open(self.folderName+'/'+ str(y) +'.txt','w', encoding="utf-8")
+            # MODIFI this!!!!! We need use category name
+            f = open(str(self.dut)+'/'+ str(y) +'.txt','w', encoding="utf-8")
+            
+            # DELETE THIS
             y+=1
+            # what items we skip
             z = 0
-
+            
+            # start scrap every page in this category
             for r in range(spug):
+                # open next page
                 pages = (requests.get(url+str("?s="+str(0+ z))))
+                # skip 120 items
                 z += 120
+                # get HTML file page
                 bhtml = BeautifulSoup(pages.content,"html.parser")
+                # print what page we open now. 
                 print(url+str("?s="+str(0+ z)))
+
+                # selected all shell what we have in pages
                 for el in bhtml.select(self.shell):
                     #take all data's
                     title = el.select(self.title)
@@ -65,7 +82,6 @@ class Main():
                     date = el.select(self.date)
 
                     # write all this in txt file
-                    
                     f.write(date[0].text)
                     f.write('---')
                     f.write(title[0].text)
