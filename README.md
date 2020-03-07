@@ -9,11 +9,14 @@ Click __download__ and unrar in folder.
 
 Write in your console
 ```
+pip install requests bs4
+
 python run.py
 ```
 
 ### Output
-All files inside __output/__
+All files inside __Date+time/__
+All scrape data write in file __CategoryName.txt__ 
 
 ## Built With
 
