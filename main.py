@@ -65,10 +65,8 @@ class Main():
             # resize
             ws.column_dimensions['B'].width = 100
             ws.column_dimensions['D'].width = 200
-            # sheet title
-            ws.title = str(self.Category[y].replace('/', '-'))
 
-
+            t = 0
             
             y+=1
             # what items we skip
@@ -84,7 +82,7 @@ class Main():
                 bhtml = BeautifulSoup(pages.content,"html.parser")
                 # print what page we open now. 
                 print(r)
-                t = 0
+                
                 # selected all shell what we have in pages
                 for el in bhtml.select(self.shell):
                     #take all data's
@@ -113,4 +111,4 @@ class Main():
 
             # close file    
             f.close()
-            self.wb.save(str(self.dut)+"/output.xlsx")
+            self.wb.save(str(self.dut)+"/"+str(self.Category[y].replace('/', '-'))+".xlsx")
