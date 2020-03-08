@@ -3,7 +3,7 @@ Scrape https://sfbay.craigslist.org/ , in output we have files.txt and files.xsl
 
 ## Installing and getting started
 
-Click __download__ and unrar in folder. 
+Click __download__ and unarchive in folder. 
 
 ## Running 
 

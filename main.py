@@ -3,17 +3,18 @@ from bs4 import BeautifulSoup
 import time
 import os 
 from datetime import date
-import shutil
+import openpyxl
+
 
 class Main():
     def __init__(self, dicts, shell, title, link, price, date, dut):
-        self.dict = dicts
-        self.shell = shell
-        self.title = title
-        self.link = link
-        self.price = price 
-        self.date = date
-        self.dut = dut
+        self.dict           = dicts
+        self.shell          = shell
+        self.title          = title
+        self.link           = link
+        self.price          = price 
+        self.date           = date
+        self.dut            = dut
 
     # getting all ours links
     def takeLinks(self):
@@ -29,6 +30,7 @@ class Main():
         for i in self.dict:
             # write list function
             self.links.append(self.dict[i])
+
 
     def main(self):
         y = 0
@@ -55,6 +57,19 @@ class Main():
             # open file.txt
             # MODIFI this!!!!! We need use category name
             f = open(str(self.dut)+"/"+str(self.Category[y].replace('/', '-')) +'.txt','w', encoding="utf-8")
+            
+
+            # excel open
+            self.wb = openpyxl.Workbook()
+            ws = self.wb.active
+            # resize
+            ws.column_dimensions['B'].width = 100
+            ws.column_dimensions['D'].width = 200
+            # sheet title
+            ws.title = str(self.Category[y].replace('/', '-'))
+
+
+            
             y+=1
             # what items we skip
             z = 0
@@ -69,7 +84,7 @@ class Main():
                 bhtml = BeautifulSoup(pages.content,"html.parser")
                 # print what page we open now. 
                 print(r)
-
+                t = 0
                 # selected all shell what we have in pages
                 for el in bhtml.select(self.shell):
                     #take all data's
@@ -77,7 +92,15 @@ class Main():
                     link = el.select(self.title)
                     price = el.select(self.price)
                     date = el.select(self.date)
+                    # excel saver
+                    t +=1
+                    ws['A'+str(t)]= date[0].text
+                    ws['B'+str(t)]= title[0].text
+                    ws['C'+str(t)]= price[0].text
+                    ws['D'+str(t)]= link[0].get('href')
 
+
+                    
                     # write all this in txt file
                     f.write(date[0].text)
                     f.write('---')
@@ -90,3 +113,4 @@ class Main():
 
             # close file    
             f.close()
+            self.wb.save(str(self.dut)+"/output.xlsx")
