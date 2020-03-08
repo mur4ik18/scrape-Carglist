@@ -9,7 +9,7 @@ Click __download__ and unarchive in folder.
 
 Write in your console
 ```
-pip install requests bs4
+pip install requests bs4 openpyxl
 
 python run.py
 ```
