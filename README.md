@@ -13,6 +13,7 @@ pip install requests bs4 openpyxl
 
 python run.py
 ```
+![](https://giphy.com/gifs/gIYO1IbS34NlUUjdBV/html5)
 
 ### Output
 All files inside __Date+time/__
