@@ -15,7 +15,7 @@ python run.py
 ```
 ### Output
 All files inside __Date+time/__
-All scrape data write in file __CategoryName.txt__ 
+All scrape data write in file __CategoryName.txt__ and __CategoryName.xlsx__
 
 ## Built With
 
